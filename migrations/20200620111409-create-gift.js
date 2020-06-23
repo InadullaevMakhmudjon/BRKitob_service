@@ -9,14 +9,14 @@ module.exports = {
     title_kr: {
       type: Sequelize.STRING,
     },
-    title_ru: {
+    title_lat: {
       type: Sequelize.STRING,
     },
     description_kr: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
     },
-    description_ru: {
-      type: Sequelize.STRING,
+    description_lat: {
+      type: Sequelize.TEXT,
     },
     image: {
       type: Sequelize.STRING,

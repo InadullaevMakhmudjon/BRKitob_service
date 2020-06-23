@@ -2,9 +2,9 @@ import Joi from 'joi';
 
 const schema = Joi.object().keys({
   title_kr: Joi.string().required(),
-  title_ru: Joi.string().required(),
+  title_lat: Joi.string().required(),
   description_kr: Joi.string().required(),
-  description_ru: Joi.string().required(),
+  description_lat: Joi.string().required(),
   price: Joi.number().required(),
   point: Joi.number().integer(),
 });
@@ -34,9 +34,9 @@ export const validationBook = async (req, res, next) => {
 
     req.book = {
       title_kr: req.body.title_kr,
-      title_ru: req.body.title_ru,
+      title_lat: req.body.title_lat,
       description_kr: req.body.description_kr,
-      description_ru: req.body.description_ru,
+      description_lat: req.body.description_lat,
       price: req.body.price,
       point: req.body.point,
     };

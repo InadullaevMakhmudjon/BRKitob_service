@@ -11,16 +11,16 @@ module.exports = {
       unique: true,
       type: Sequelize.STRING(160),
     },
-    title_ru: {
+    title_lat: {
       allowNull: false,
       unique: true,
       type: Sequelize.STRING(160),
     },
     description_kr: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
     },
-    description_ru: {
-      type: Sequelize.STRING,
+    description_lat: {
+      type: Sequelize.TEXT,
     },
     price: {
       type: Sequelize.FLOAT,
