@@ -1,4 +1,3 @@
-
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('Images', {
     id: {
@@ -19,5 +18,5 @@ module.exports = {
       },
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('Images'),
+  down: (queryInterface) => queryInterface.dropTable('Images'),
 };

@@ -5,7 +5,7 @@ const schema = Joi.object().keys({
   title_ru: Joi.string().required(),
   description_kr: Joi.string().required(),
   description_ru: Joi.string().required(),
-  image: Joi.string().required(),
+  image: Joi.string().uri().required(),
   bonus: Joi.number().required(),
   deadline: Joi.date().optional(),
 });

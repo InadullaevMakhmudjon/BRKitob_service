@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
   const Gift = sequelize.define('Gift', {
     title_kr: DataTypes.STRING,

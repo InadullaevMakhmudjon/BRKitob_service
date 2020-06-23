@@ -6,6 +6,7 @@ const schema = Joi.object().keys({
   description_kr: Joi.string().required(),
   description_ru: Joi.string().required(),
   price: Joi.number().required(),
+  point: Joi.number().integer(),
 });
 
 const imageSchema = Joi.object().keys({
@@ -37,6 +38,7 @@ export const validationBook = async (req, res, next) => {
       description_kr: req.body.description_kr,
       description_ru: req.body.description_ru,
       price: req.body.price,
+      point: req.body.point,
     };
     next();
   } catch (error) { res.status(403).json(error); }

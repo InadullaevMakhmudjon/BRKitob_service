@@ -1,4 +1,3 @@
-
 module.exports = {
   up: (queryInterface) => queryInterface.bulkInsert('Books', [
     {
@@ -8,6 +7,7 @@ module.exports = {
       description_kr: 'Бу чиндан ҳам ўқилган ва зўр китоб 1',
       description_ru: 'Это действительно читаемая и отличная книга 1',
       price: 4455,
+      point: 10,
     },
     {
       id: 2,
@@ -16,6 +16,7 @@ module.exports = {
       description_kr: 'Бу чиндан ҳам ўқилган ва зўр китоб 2',
       description_ru: 'Это действительно читаемая и отличная книга 2',
       price: 4465,
+      point: 8,
     },
     {
       id: 3,
@@ -24,6 +25,7 @@ module.exports = {
       description_kr: 'Бу чиндан ҳам ўқилган ва зўр китоб 3',
       description_ru: 'Это действительно читаемая и отличная книга 3',
       price: 4475,
+      point: 6,
     },
   ], {}),
 

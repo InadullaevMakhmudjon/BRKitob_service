@@ -34,6 +34,11 @@ export default {
       .then(() => { res.sendStatus(201); hook(); })
       .catch((error) => res.status(502).json(error));
   },
+  update(req, res) {
+    models.Book.update(req.book, { where: { id: req.params.id } })
+      .then(() => res.sendStatus(200))
+      .catch((error) => res.status(502).json(error));
+  },
   appendImage(req, res) {
     models.Image.create(req.bookImage)
       .then(() => { res.sendStatus(201); })

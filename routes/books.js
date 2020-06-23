@@ -8,5 +8,6 @@ router.get('/', books.getAll);
 router.get('/:language', books.getByTitle);
 router.post('/image', validateImage, books.appendImage);
 router.post('/', validationBook, books.create);
+router.post('/:id', validationBook, books.update);
 
 export default router;

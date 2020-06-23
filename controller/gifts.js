@@ -29,4 +29,9 @@ export default {
       .then(() => { res.sendStatus(201); hook(); })
       .catch((error) => res.status(502).json(error));
   },
+  update(req, res) {
+    models.Gift.update(req.gift, { where: { id: req.params.id } })
+      .then(() => res.sendStatus(200))
+      .catch((error) => res.status(502).json(error));
+  },
 };
