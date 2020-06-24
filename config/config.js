@@ -7,6 +7,7 @@ module.exports = {
     database: 'database_development',
     host: '127.0.0.1',
     dialect: 'mysql',
+    timezone: '+05:00',
     define: {
       timestamps: false,
     },
@@ -17,6 +18,7 @@ module.exports = {
     database: 'database_test',
     host: '127.0.0.1',
     dialect: 'mysql',
+    timezone: '+05:00',
     define: {
       timestamps: false,
     },
@@ -27,6 +29,7 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    timezone: '+05:00',
     define: {
       timestamps: false,
     },
