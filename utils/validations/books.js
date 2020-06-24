@@ -11,7 +11,7 @@ const schema = Joi.object().keys({
 
 const imageSchema = Joi.object().keys({
   bookId: Joi.number().required(),
-  url: Joi.string().required(),
+  url: Joi.string().uri().required(),
 });
 
 export const validateImage = async (req, res, next) => {
