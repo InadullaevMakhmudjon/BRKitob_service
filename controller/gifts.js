@@ -1,10 +1,16 @@
 import models from '../models';
 import hook from '../utils/hook';
 
+const find = (where, single) => new Promise((res, rej) => {
+  models.Gift[single ? 'findOne' : 'findAll']({ where })
+    .then(res).catch(rej);
+});
+
 export default {
   async getAll(req, res) {
     try {
-      const gifts = await models.Gift.findAll();
+      const { title_kr, title_lat } = req.query;
+      const gifts = await find(req.query, title_kr || title_lat);
       res.status(200).json(gifts);
     } catch (e) {
       res.status(502).json(e);
@@ -14,20 +20,6 @@ export default {
     models.Gift.findByPk(req.params.id)
       .then((gift) => res.status(200).json(gift))
       .catch((error) => res.status(502).json(error));
-  },
-  async getByTitle(req, res) {
-    try {
-      const { title } = req.query;
-      const { language } = req.params;
-      if (language && title) {
-        const gift = await models.Gift.findOne({
-          where: { [`title_${language}`]: title },
-        });
-        res.status(200).json(gift);
-      }
-    } catch (e) {
-      res.status(502).json(e);
-    }
   },
   create(req, res) {
     models.Gift.create(req.gift)
