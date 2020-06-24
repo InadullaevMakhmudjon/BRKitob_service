@@ -5,6 +5,7 @@ import { validationBook, validateImage } from '../utils/validations/books';
 const router = Router();
 
 router.get('/', books.getAll);
+router.get('/:id', books.get);
 router.get('/:language', books.getByTitle);
 router.post('/image', validateImage, books.appendImage);
 router.post('/', validationBook, books.create);

@@ -10,6 +10,11 @@ export default {
       res.status(502).json(e);
     }
   },
+  get(req, res) {
+    models.Gift.findByPk(req.params.id)
+      .then((gift) => res.status(200).json(gift))
+      .catch((error) => res.status(502).json(error));
+  },
   async getByTitle(req, res) {
     try {
       const { title } = req.query;
