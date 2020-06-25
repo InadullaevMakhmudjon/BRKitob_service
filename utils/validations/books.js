@@ -25,7 +25,7 @@ export default async (req, res, next) => {
       description_lat: req.body.description_lat,
       price: req.body.price,
       point: req.body.point,
-      images: req.body.images,
+      images: req.body.images && req.body.images.map((url) => ({ url })),
     };
     next();
   } catch (error) { res.status(403).json(error); }
