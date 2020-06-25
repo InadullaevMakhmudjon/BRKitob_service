@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     description_kr: DataTypes.STRING,
     description_lat: DataTypes.STRING,
     image: DataTypes.STRING,
-    bonus: DataTypes.FLOAT,
+    point: DataTypes.FLOAT,
     createdAt: DataTypes.DATE,
     deadline: DataTypes.DATE,
   }, {});

@@ -21,6 +21,14 @@ module.exports = {
     language_code: {
       type: Sequelize.STRING,
     },
+    pointId: {
+      allowNull: false,
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'UserPoints',
+        key: 'id',
+      },
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

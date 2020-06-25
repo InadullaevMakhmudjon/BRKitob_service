@@ -24,6 +24,7 @@ export default async (req, res, next) => {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       username: req.body.username,
+      point: { value: 0 },
     };
     next();
   } catch (error) { res.status(403).json(error); }

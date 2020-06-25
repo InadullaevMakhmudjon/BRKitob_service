@@ -3,7 +3,13 @@ import models from '../models';
 export default {
   async getAll(req, res) {
     try {
-      const users = await models.User.findAll();
+      const users = await models.User.findAll({
+        attributes: { exclude: ['pointId'] },
+        include: [{
+          model: models.UserPoint,
+          as: 'point',
+        }],
+      });
       res.status(200).json(users);
     } catch (e) {
       res.status(502).json({ error: e });
@@ -16,7 +22,12 @@ export default {
   },
   async create(req, res) {
     try {
-      const user = await models.User.create(req.user);
+      const user = await models.User.create(req.user, {
+        include: [{
+          association: models.User.associations.point,
+          as: 'point',
+        }],
+      });
       res.status(201).json(user);
     } catch (e) {
       res.status(502).json({ error: e });

@@ -21,7 +21,7 @@ module.exports = {
     image: {
       type: Sequelize.STRING,
     },
-    bonus: {
+    point: {
       type: Sequelize.FLOAT,
     },
     deadline: {
