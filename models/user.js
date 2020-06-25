@@ -5,8 +5,11 @@ module.exports = (sequelize, DataTypes) => {
     last_name: DataTypes.STRING,
     username: DataTypes.STRING,
     language_code: DataTypes.STRING,
+    pointId: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
   }, {});
-  User.associate = () => {};
+  User.associate = (models) => {
+    User.belongsTo(models.UserPoint, { as: 'point' });
+  };
   return User;
 };
