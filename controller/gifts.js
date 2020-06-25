@@ -21,6 +21,18 @@ export default {
       .then((gift) => res.status(200).json(gift))
       .catch((error) => res.status(502).json(error));
   },
+  async getAffordable(req, res) {
+    try {
+      const gifts = await models.Gift.findAll({
+        where: {
+          point: { [models.Sequelize.Op.lte]: req.params.point },
+        },
+      });
+      res.status(200).json(gifts);
+    } catch (error) {
+      res.status(502).json({ error });
+    }
+  },
   create(req, res) {
     models.Gift.create(req.gift)
       .then(() => { res.sendStatus(201); hook(); })

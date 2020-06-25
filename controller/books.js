@@ -29,8 +29,12 @@ export default {
   },
   async create(req, res) {
     try {
-      const { id: bookId } = await models.Book.create(req.book);
-      await Promise.all(req.book.images.map((url) => models.Image.create({ bookId, url })));
+      await models.Book.create(req.book, {
+        include: [{
+          association: models.Book.associations.images,
+          as: 'images',
+        }],
+      });
       res.sendStatus(201);
       hook();
     } catch (error) {
@@ -46,7 +50,7 @@ export default {
       await models.Book.update(req.book, { where: { id: req.params.id } });
       if (book.images) {
         await models.Image.destroy({ where: { bookId: req.params.id } });
-        await Promise.all([book.images.map((url) => models.Image.create({ url, bookId: req.params.id }))]);
+        await models.Image.bulkCreate(book.images.map(({ url }) => ({ url, bookId: req.params.id })));
       }
       res.sendStatus(200);
     } catch (error) {
