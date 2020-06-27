@@ -1,14 +1,33 @@
 import models from '../models';
 
+const include = [
+  {
+    model: models.UserPoint,
+    as: 'point',
+  },
+  {
+    model: models.Gift,
+    as: 'gifts',
+    through: { attributes: [] },
+  },
+  {
+    model: models.Order,
+    as: 'orders',
+    include: [
+      {
+        model: models.OrderStatus,
+        as: 'status',
+      },
+    ],
+  },
+];
+
 export default {
   async getAll(req, res) {
     try {
       const users = await models.User.findAll({
         attributes: { exclude: ['pointId'] },
-        include: [{
-          model: models.UserPoint,
-          as: 'point',
-        }],
+        include,
       });
       res.status(200).json(users);
     } catch (e) {
@@ -16,7 +35,7 @@ export default {
     }
   },
   async get(req, res) {
-    const user = await models.User.findOne({ where: { id: req.params.id } });
+    const user = await models.User.findByPk(req.params.id, { include });
     if (user) res.status(200).json(user);
     else res.sendStatus(204);
   },

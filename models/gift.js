@@ -9,6 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     createdAt: DataTypes.DATE,
     deadline: DataTypes.DATE,
   }, {});
-  Gift.associate = () => {};
+  Gift.associate = (models) => {
+    Gift.belongsToMany(models.User, {
+      as: 'users',
+      through: models.UserGift,
+      foreignKey: 'giftId',
+    });
+  };
   return Gift;
 };

@@ -10,6 +10,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   User.associate = (models) => {
     User.belongsTo(models.UserPoint, { as: 'point' });
+    User.hasMany(models.Order, { as: 'orders', foreignKey: 'userId' });
+    User.belongsToMany(models.Gift, {
+      as: 'gifts',
+      through: models.UserGift,
+      foreignKey: 'userId',
+    });
   };
   return User;
 };

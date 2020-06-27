@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
   const UserBook = sequelize.define('UserBook', {
     bookId: DataTypes.INTEGER,
