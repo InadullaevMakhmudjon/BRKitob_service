@@ -1,5 +1,5 @@
-const isExists = async (model, where) => {
-  const user = await model.findOne({ where, attributes: ['id'], raw: true });
+const isExists = async (model, id) => {
+  const user = await model.findOne({ where: { id }, attributes: ['id'], raw: true });
   return !!user;
 };
 

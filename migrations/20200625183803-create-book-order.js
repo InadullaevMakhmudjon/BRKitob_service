@@ -15,6 +15,10 @@ module.exports = {
         key: 'id',
       },
     },
+    quantity: {
+      allowNull: false,
+      type: Sequelize.INTEGER,
+    },
     orderId: {
       type: Sequelize.INTEGER,
       allowNull: false,
