@@ -14,7 +14,7 @@ const schema = Joi.object().keys({
 export default async (req, res, next) => {
   try {
     let { error } = Joi.validate(req.body, schema);
-    const exists = error ? null : await isExist(models.User, { id: req.body.id });
+    const exists = error ? null : await isExist(models.User, req.body.id);
     if (exists) error = { isJoi: false, message: 'User is exists' };
     if (error) throw error;
 
