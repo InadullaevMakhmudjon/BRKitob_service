@@ -6,6 +6,10 @@ const find = (where, single) => new Promise((res, rej) => {
     attributes: { exclude: ['statusId'] },
     include: [
       {
+        model: models.User,
+        as: 'user',
+      },
+      {
         model: models.OrderStatus,
         as: 'status',
       },
