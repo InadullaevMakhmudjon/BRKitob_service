@@ -6,7 +6,7 @@ const schema = Joi.object().keys({
   description_kr: Joi.string().required(),
   description_lat: Joi.string().required(),
   image: Joi.string().uri().required(),
-  bonus: Joi.number().required(),
+  point: Joi.number().required(),
   deadline: Joi.date().optional(),
 });
 
@@ -21,7 +21,7 @@ export default async (req, res, next) => {
       description_kr: req.body.description_kr,
       description_lat: req.body.description_lat,
       image: req.body.image,
-      bonus: req.body.bonus,
+      point: req.body.point,
       deadline: req.body.deadline,
     };
     next();
