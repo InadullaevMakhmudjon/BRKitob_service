@@ -1,8 +1,16 @@
 import models from '../models';
 import hook from '../utils/hook';
 
+const include = [
+  {
+    model: models.User,
+    as: 'users',
+    through: { attributes: [] },
+  },
+];
+
 const find = (where, single) => new Promise((res, rej) => {
-  models.Gift[single ? 'findOne' : 'findAll']({ where })
+  models.Gift[single ? 'findOne' : 'findAll']({ where, include })
     .then(res).catch(rej);
 });
 
@@ -17,7 +25,7 @@ export default {
     }
   },
   get(req, res) {
-    models.Gift.findByPk(req.params.id)
+    models.Gift.findByPk(req.params.id, { include })
       .then((gift) => res.status(200).json(gift))
       .catch((error) => res.status(502).json(error));
   },
