@@ -18,6 +18,9 @@ module.exports = {
     username: {
       type: Sequelize.STRING,
     },
+    phone_number: {
+      type: Sequelize.STRING,
+    },
     language_code: {
       type: Sequelize.STRING,
     },
