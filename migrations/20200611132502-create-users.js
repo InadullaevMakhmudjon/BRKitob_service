@@ -18,7 +18,7 @@ module.exports = {
     username: {
       type: Sequelize.STRING,
     },
-    contact: {
+    phone_number: {
       type: Sequelize.STRING,
     },
     language_code: {

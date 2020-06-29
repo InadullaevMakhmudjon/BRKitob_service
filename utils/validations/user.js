@@ -8,7 +8,7 @@ const schema = Joi.object().keys({
   first_name: Joi.string().optional(),
   last_name: Joi.string().optional(),
   username: Joi.string().optional(),
-  contact: Joi.string().required(),
+  phone_number: Joi.string().required(),
   language_code: Joi.string().optional(),
 });
 
@@ -25,7 +25,7 @@ export default async (req, res, next) => {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       username: req.body.username,
-      contact: req.body.contact,
+      phone_number: req.body.phone_number,
       point: { value: 0 },
     };
     next();
