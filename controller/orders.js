@@ -46,7 +46,7 @@ export default {
       res.status(502).json(error);
     }
   },
-  async create(req, res) {
+  async create(req, res, next) {
     try {
       const calculate = ({ id, price }) => {
         const { quantity } = req.order.products.find(({ bookId }) => bookId == id) || {};
@@ -54,7 +54,7 @@ export default {
       };
       const books = await models.Book.findAll({
         where: { id: req.order.products.map(({ bookId }) => bookId) },
-        attributes: ['id', 'price'],
+        attributes: ['id', 'price', 'point'],
         raw: true,
       });
       const price = books.reduce((a, b) => a + calculate(b), 0);
@@ -64,7 +64,8 @@ export default {
           as: 'products',
         }],
       });
-      res.sendStatus(201);
+      req.books = books;
+      next();
     } catch (error) {
       res.status(502).json(error);
     }
@@ -78,5 +79,13 @@ export default {
     update(3, req.params.id)
       .then(() => res.sendStatus(204))
       .catch((e) => res.status(502).json(e));
+  },
+  // This will add points to the user
+  async addPoints(req, res) {
+    const user = await models.User.findByPk(req.order.userId);
+    user.update({
+      point: user.point + req.books.map(({ point }) => point).reduce((acc, cur) => acc + cur),
+    });
+    res.sendStatus(201);
   },
 };
