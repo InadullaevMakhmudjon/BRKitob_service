@@ -29,6 +29,13 @@ module.exports = {
       type: Sequelize.INTEGER,
       defaultValue: 0,
     },
+    deliveryTypeId: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'DeliveryTypes',
+        key: 'id',
+      },
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,
