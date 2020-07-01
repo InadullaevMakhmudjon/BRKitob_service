@@ -17,10 +17,12 @@ const checkUserExists = (id) => new Promise((res, rej) => {
 
 const schema = Joi.object().keys({
   userId: Joi.number().required(),
+  typeId: Joi.number().required(),
+  method: Joi.number().required(),
   products: Joi.array().items({
     bookId: Joi.number().required(),
     quantity: Joi.number().required(),
-  }),
+  }).required(),
 });
 
 export default async (req, res, next) => {
@@ -29,8 +31,11 @@ export default async (req, res, next) => {
     if (error) throw error;
     await checkUserExists(req.body.userId);
     await checkBookExists(req.body.products.map(({ bookId }) => bookId));
+
     req.order = {
       userId: req.body.userId,
+      typeId: req.body.typeId,
+      method: req.body.method,
       products: req.body.products,
     };
     next();
