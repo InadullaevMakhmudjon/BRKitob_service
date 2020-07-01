@@ -15,8 +15,21 @@ module.exports = {
         key: 'id',
       },
     },
-    price: {
+    paymentId: {
+      allowNull: false,
       type: Sequelize.INTEGER,
+      references: {
+        model: 'Payments',
+        key: 'id',
+      },
+    },
+    typeId: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'OrderTypes',
+        key: 'id',
+      },
     },
     statusId: {
       type: Sequelize.INTEGER,
