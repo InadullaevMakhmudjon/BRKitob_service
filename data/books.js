@@ -7,6 +7,7 @@ module.exports = [
     description_lat: 'Bu chindan ham o\'qilgan va zo\'r kitob 1',
     price: 4455,
     point: 10,
+    deliveryTypeId: 1,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ module.exports = [
     description_lat: 'Bu chindan ham o\'qilgan va zo\'r kitob 2',
     price: 4465,
     point: 8,
+    deliveryTypeId: 2,
   },
   {
     id: 3,
@@ -25,5 +27,6 @@ module.exports = [
     description_lat: 'Bu chindan ham o\'qilgan va zo\'r kitob 3',
     price: 4475,
     point: 6,
+    deliveryTypeId: 2,
   },
 ];
