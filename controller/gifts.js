@@ -7,6 +7,11 @@ const include = [
     as: 'users',
     through: { attributes: [] },
   },
+  {
+    model: models.DeliveryType,
+    as: 'deliveryType',
+    attributes: { exclude: ['createdAt', 'updatedAt'] },
+  },
 ];
 
 const find = (where, single) => new Promise((res, rej) => {

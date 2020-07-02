@@ -8,6 +8,7 @@ const schema = Joi.object().keys({
   image: Joi.string().uri().required(),
   point: Joi.number().required(),
   deadline: Joi.date().optional(),
+  deliveryTypeId: Joi.number().integer().required(),
 });
 
 export default async (req, res, next) => {
@@ -23,6 +24,7 @@ export default async (req, res, next) => {
       image: req.body.image,
       point: req.body.point,
       deadline: req.body.deadline,
+      deliveryTypeId: req.body.deliveryTypeId,
     };
     next();
   } catch (error) { res.status(403).json(error); }

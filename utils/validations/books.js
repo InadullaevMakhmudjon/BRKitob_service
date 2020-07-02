@@ -8,6 +8,7 @@ const schema = (key) => Joi.object().keys({
   price: Joi.number()[key](),
   images: Joi.array()[key](),
   point: Joi.number().integer()[key](),
+  deliveryTypeId: Joi.number().integer().required(),
 });
 
 export const update = (req, res, next) => { req.schemaKey = 'optional'; next(); };
@@ -26,6 +27,7 @@ export default async (req, res, next) => {
       price: req.body.price,
       point: req.body.point,
       images: req.body.images && req.body.images.map((url) => ({ url })),
+      deliveryTypeId: req.body.deliveryTypeId,
     };
     next();
   } catch (error) { res.status(403).json(error); }
