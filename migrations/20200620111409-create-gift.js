@@ -27,6 +27,13 @@ module.exports = {
     deadline: {
       type: Sequelize.DATE,
     },
+    deliveryTypeId: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'DeliveryTypes',
+        key: 'id',
+      },
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

@@ -1,11 +1,18 @@
 import models from '../models';
 import hook from '../utils/hook';
 
-const include = [{
-  model: models.Image,
-  as: 'images',
-  attributes: { exclude: ['bookId', 'BookId', 'id'] },
-}];
+const include = [
+  {
+    model: models.Image,
+    as: 'images',
+    attributes: { exclude: ['bookId', 'BookId', 'id'] },
+  },
+  {
+    model: models.DeliveryType,
+    as: 'deliveryType',
+    attributes: { exclude: ['createdAt', 'updatedAt'] },
+  },
+];
 
 const find = (where, single) => new Promise((res, rej) => {
   models.Book[single ? 'findOne' : 'findAll']({ where, include })
@@ -38,6 +45,7 @@ export default {
       res.sendStatus(201);
       hook();
     } catch (error) {
+      console.log(error);
       res.status(502).json(error);
     }
   },

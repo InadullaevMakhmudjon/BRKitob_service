@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www --exec babel-node --presets babel-preset-env --plugins babel-plugin-transform-object-rest-spread",
-    "update": "sequelize db:drop && sequelize db:create --charset utf8mb4 && sequelize db:migrate --debug && sequelize db:seed:all --debug"
+    "custom-update": "sequelize db:drop && sequelize db:create --charset utf8mb4 && sequelize db:migrate --debug && sequelize db:seed:all --debug",
+    "update": "docker exec bot_server yarn custom-update"
   },
   "dependencies": {
     "axios": "^0.19.2",
