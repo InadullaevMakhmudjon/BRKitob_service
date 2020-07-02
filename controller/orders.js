@@ -90,7 +90,7 @@ const createPayment = (price, phone_number) => new Promise((resolve) => {
 // Adds point to the user and returns that user's `phone number`
 const addPoints = async (userId, books) => {
   const user = await models.User.findByPk(userId);
-  user.update({
+  await user.update({
     point: user.point + books.map(({ point }) => point).reduce((acc, cur) => acc + cur),
   });
   return user.phone_number.substr(1);
