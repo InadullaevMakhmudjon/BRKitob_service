@@ -7,6 +7,7 @@ const router = Router();
 router.get('/', orders.getAll);
 router.get('/:id', orders.get);
 router.post('/', validation, orders.create);
+router.post('/:chargerId', validation, orders.create);
 router.post('/:id/waiting', orders.waiting);
 router.post('/:id/done', orders.done);
 
