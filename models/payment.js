@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     stateId: DataTypes.INTEGER,
     descrption: DataTypes.STRING,
     price: DataTypes.INTEGER,
+    transaction: DataTypes.INTEGER,
     url: DataTypes.STRING,
     createdAt: DataTypes.DATE,
   }, {});
