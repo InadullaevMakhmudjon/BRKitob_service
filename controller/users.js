@@ -57,4 +57,16 @@ export default {
       .then(() => res.sendStatus(200))
       .catch((err) => res.status(502).json(err));
   },
+  async getGift(req, res) {
+    try {
+      const user = await models.User.findByPk(req.params.id);
+      const gift = await models.Gift.findByPk(req.body.giftId);
+      await user.addGift(gift);
+      const point = await user.getPoint();
+      await point.increment({ value: -1 * gift.point });
+      res.status(200).json(await user.getPoint());
+    } catch (error) {
+      res.status(502).json(error);
+    }
+  },
 };

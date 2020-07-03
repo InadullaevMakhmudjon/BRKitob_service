@@ -7,6 +7,7 @@ const router = Router();
 router.get('/', users.getAll);
 router.get('/:id', users.get);
 router.post('/', validate, users.create);
+router.post('/:id/getGift', users.getGift);
 router.delete('/:id', users.delete);
 
 export default router;
