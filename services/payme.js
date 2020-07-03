@@ -7,22 +7,21 @@ const API = axios.create({
   baseURL: process.env.PAYME_URL,
 });
 
-const send = (id, phone) => API.post('/api', {
-  method: 'receipts.send',
-  params: {
-    id,
-    phone,
-  },
-});
-
-const sendMessage = async (data, phone) => {
-  // eslint-disable-next-line no-underscore-dangle
-  await send(data.result.receipt._id, phone);
-  return data;
-};
-
 export default {
-  create: (amount, phone) => API.post('/api', {
+  get: (id) => API.post('/api', {
+    method: 'receipts.get',
+    params: {
+      id,
+    },
+  }).then(({ data }) => data),
+  send: (id, phone) => API.post('/api', {
+    method: 'receipts.send',
+    params: {
+      id,
+      phone,
+    },
+  }),
+  create: (amount) => API.post('/api', {
     method: 'receipts.create',
     params: {
       account: {
@@ -32,7 +31,7 @@ export default {
       description: '',
       merchant_id: token.split(':')[0],
     },
-  }).then(({ data }) => sendMessage(data, phone)),
+  }).then(({ data }) => data),
   check: (id) => API.post('/api', {
     method: 'receipts.check',
     params: {
