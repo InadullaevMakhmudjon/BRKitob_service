@@ -57,13 +57,15 @@ export default {
       .then(() => res.sendStatus(200))
       .catch((err) => res.status(502).json(err));
   },
+  // eslint-disable-next-line consistent-return
   async getGift(req, res) {
     try {
       const user = await models.User.findByPk(req.params.id);
       const gift = await models.Gift.findByPk(req.body.giftId);
-      await models.UserGift.create({ userId: user.id, giftId: gift.id });
       const point = await user.getPoint();
+      if (point.value - gift.point < 0) return res.status(400).json({ message: 'Bonuslaringiz yetmaydi' });
       await point.increment({ value: -1 * gift.point });
+      await models.UserGift.create({ userId: user.id, giftId: gift.id });
       res.status(200).json(await user.getPoint());
     } catch (error) {
       res.status(502).json(error);
