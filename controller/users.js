@@ -61,7 +61,7 @@ export default {
     try {
       const user = await models.User.findByPk(req.params.id);
       const gift = await models.Gift.findByPk(req.body.giftId);
-      await user.addGift(gift);
+      await models.UserGift.create({ userId: user.id, giftId: gift.id });
       const point = await user.getPoint();
       await point.increment({ value: -1 * gift.point });
       res.status(200).json(await user.getPoint());
