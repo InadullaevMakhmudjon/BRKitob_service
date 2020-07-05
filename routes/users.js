@@ -8,6 +8,7 @@ router.get('/', users.getAll);
 router.get('/:id', users.get);
 router.post('/', validate, users.create);
 router.post('/:id/getGift', users.getGift);
+router.post('/:id/updatePoint', users.updatePoint);
 router.delete('/:id', users.delete);
 
 export default router;

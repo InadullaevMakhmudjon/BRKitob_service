@@ -52,6 +52,15 @@ export default {
       res.status(502).json({ error: e });
     }
   },
+  async updatePoint(req, res) {
+    try {
+      const user = await models.User.findByPk(req.params.id);
+      await models.UserPoint.update(req.body, { where: { id: user.pointId } });
+      res.sendStatus(200);
+    } catch (error) {
+      res.status(502).json({ error });
+    }
+  },
   async delete(req, res) {
     models.User.destroy({ where: { id: req.params.id } })
       .then(() => res.sendStatus(200))
