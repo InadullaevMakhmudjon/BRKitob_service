@@ -3,6 +3,8 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     paymentId: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
+    latitude: DataTypes.DECIMAL(10, 8),
+    longitude: DataTypes.DECIMAL(11, 8),
     statusId: DataTypes.INTEGER,
     typeId: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
