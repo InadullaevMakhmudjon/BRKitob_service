@@ -23,6 +23,9 @@ module.exports = {
         key: 'id',
       },
     },
+    price: {
+      type: Sequelize.INTEGER,
+    },
     typeId: {
       type: Sequelize.INTEGER,
       allowNull: false,
