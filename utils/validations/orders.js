@@ -35,6 +35,8 @@ export default async (req, res, next) => {
     req.order = {
       userId: req.body.userId,
       typeId: req.body.typeId,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
       method: req.body.method,
       products: req.body.products,
     };

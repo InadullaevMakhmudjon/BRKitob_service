@@ -23,6 +23,15 @@ module.exports = {
         key: 'id',
       },
     },
+    price: {
+      type: Sequelize.INTEGER,
+    },
+    latitude: {
+      type: Sequelize.DECIMAL(10, 8),
+    },
+    longitude: {
+      type: Sequelize.DECIMAL(11, 8),
+    },
     typeId: {
       type: Sequelize.INTEGER,
       allowNull: false,

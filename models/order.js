@@ -2,6 +2,9 @@ module.exports = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
     userId: DataTypes.INTEGER,
     paymentId: DataTypes.INTEGER,
+    price: DataTypes.INTEGER,
+    latitude: DataTypes.DECIMAL(10, 8),
+    longitude: DataTypes.DECIMAL(11, 8),
     statusId: DataTypes.INTEGER,
     typeId: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
