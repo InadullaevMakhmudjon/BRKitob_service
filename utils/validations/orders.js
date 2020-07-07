@@ -19,8 +19,8 @@ const schema = Joi.object().keys({
   userId: Joi.number().required(),
   typeId: Joi.number().required(),
   method: Joi.number().required(),
-  latitude: Joi.number().required(),
-  longitude: Joi.number().required(),
+  latitude: Joi.number().optional(),
+  longitude: Joi.number().optional(),
   products: Joi.array().items({
     bookId: Joi.number().required(),
     quantity: Joi.number().required(),

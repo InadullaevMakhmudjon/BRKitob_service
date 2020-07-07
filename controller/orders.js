@@ -151,7 +151,7 @@ const getOrder = async (id) => {
 // Create method
 const createMethod = async (order, { chargerId }) => {
   const { price: totalPrice, point } = await getPrice(order.products);
-  const price = 15000 + totalPrice; // 15 000 for delivery price
+  const price = totalPrice + (order.typeId === 2 && 15000); // 15 000 for delivery price
   const phone = await addPoints(order.userId, point);
   const payment = await getPayment(order.method, price, phone, chargerId);
   const result = await createOrder(order, price, payment);
