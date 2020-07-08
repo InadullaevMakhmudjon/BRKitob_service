@@ -17,6 +17,11 @@ module.exports = (sequelize, DataTypes) => {
       through: models.UserGift,
       foreignKey: 'userId',
     });
+    User.belongsToMany(models.Course, {
+      as: 'courses',
+      through: models.UserCourse,
+      foreignKey: 'userId',
+    });
   };
   return User;
 };
