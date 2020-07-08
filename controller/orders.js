@@ -53,6 +53,7 @@ const find = (where, single) => models.Order[single ? 'findOne' : 'findAll']({
           {
             model: models.Image,
             as: 'images',
+            attributes: { exclude: ['BookId', 'bookId', 'id'] },
           },
         ],
       }],
