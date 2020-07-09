@@ -5,6 +5,7 @@ import gifts from './gifts';
 import orders from './orders';
 import deliveryTypes from './deliveryTypes';
 import bot from './bot';
+import userCourses from './userCourses';
 
 export default (app) => {
   app.use('/users', users);
@@ -12,6 +13,7 @@ export default (app) => {
   app.use('/courses', courses);
   app.use('/gifts', gifts);
   app.use('/orders', orders);
+  app.use('/userCourses', userCourses);
   app.use('/deliveryTypes', deliveryTypes);
   app.use('/bot', bot);
 };
