@@ -6,21 +6,18 @@ const { UserCourse } = models;
 const createUserCourse = (userCourse, payment) => UserCourse.create({
   ...userCourse, payment,
 }, {
-  include: [
-    {
-      association: UserCourse.associations.payment,
-      as: 'payment',
-    },
-  ],
+  include: [models.Payment],
 });
 
 // Create method
 const createMethod = async ({ courseId, userId, type }, { chargerId }) => {
   const { price } = await models.Course.findByPk(courseId);
-  const { phone } = await models.User.findByPk(userId);
-  const payment = await getPayment(type, price, phone, chargerId);
-  const result = await createUserCourse({ courseId, userId, type }, price, payment);
-  return result.payment;
+  const { phone_number } = await models.User.findByPk(userId);
+  const payment = await getPayment(type, price, phone_number, chargerId);
+  await createUserCourse({
+    courseId, userId, type, payment,
+  });
+  return payment;
 };
 
 export default {

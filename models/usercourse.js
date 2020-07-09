@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     paymentId: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
   }, { timestamps: false });
-  UserCourse.associate = () => {
-    // associations can be defined here
+  UserCourse.associate = (models) => {
+    UserCourse.belongsTo(models.Payment);
   };
   return UserCourse;
 };

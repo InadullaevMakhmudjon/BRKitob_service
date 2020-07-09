@@ -17,7 +17,7 @@ export default async (req, res, next) => {
   try {
     const { error } = Joi.validate(req.body, schema);
     if (error) throw error;
-    await checkUserExists(req.body.userId);
+    await checkUserExists(req.body.courseId);
 
     req.userCourse = {
       userId: req.body.userId,
