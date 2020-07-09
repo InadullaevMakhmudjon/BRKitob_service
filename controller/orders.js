@@ -79,7 +79,7 @@ const createOrder = (order, price, payment) => models.Order.create({
 });
 
 // Creates Payment instance on Payme and and returns it
-const createPaymentPayme = (price, phone_number) => new Promise((resolve) => {
+export const createPaymentPayme = (price, phone_number) => new Promise((resolve) => {
   Payme.create(price)
     .then(({ result: { receipt: { _id: id, account } } }) => {
       // no need to waid payment message sent
@@ -94,7 +94,7 @@ const createPaymentPayme = (price, phone_number) => new Promise((resolve) => {
     });
 });
 
-const getPaymentTelegram = (price, id) => new Promise((resolve) => {
+export const getPaymentTelegram = (price, id) => new Promise((resolve) => {
   Payme.get(id)
     .then(({ result: { receipt: { _id: paymeId, account } } }) => {
       resolve({
@@ -133,7 +133,7 @@ const getPrice = async (products) => {
 
 // Creates payment and returns that `payment` object
 // eslint-disable-next-line max-len
-const getPayment = (method, price, phone, chargerId) => (
+export const getPayment = (method, price, phone, chargerId) => (
   method === 1 ? getPaymentTelegram(price, chargerId) : createPaymentPayme(price, phone)
 );
 

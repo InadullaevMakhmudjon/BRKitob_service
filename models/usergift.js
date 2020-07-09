@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
   const UserGift = sequelize.define('UserGift', {
     giftId: DataTypes.INTEGER,
