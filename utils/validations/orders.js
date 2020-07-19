@@ -24,6 +24,7 @@ const schema = Joi.object().keys({
   products: Joi.array().items({
     bookId: Joi.number().required(),
     quantity: Joi.number().required(),
+    price: Joi.number().required(),
   }).required(),
 });
 
@@ -43,5 +44,5 @@ export default async (req, res, next) => {
       products: req.body.products,
     };
     next();
-  } catch (error) { res.status(403).json(error); }
+  } catch (error) { console.log(error); res.status(403).json(error); }
 };
